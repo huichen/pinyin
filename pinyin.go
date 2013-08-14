@@ -16,7 +16,7 @@ var (
 		[]rune{'ǎ', 'ě', 'ǐ', 'ǒ', 'ǔ', 'ǚ', 'Ǎ', 'Ě', 'Ǐ', 'Ǒ', 'Ǔ', 'Ǚ'},
 		[]rune{'à', 'è', 'ì', 'ò', 'ù', 'ǜ', 'À', 'È', 'Ì', 'Ò', 'Ù', 'Ǜ'},
 	}
-	neutrals = []rune{'a', 'e', 'i', 'o', 'u', 'v', 'a', 'e', 'i', 'o', 'u', 'v'}
+	neutrals = []rune{'a', 'e', 'i', 'o', 'u', 'v', 'A', 'E', 'I', 'O', 'U', 'V'}
 )
 
 type Pinyin struct {
@@ -50,6 +50,7 @@ func (py *Pinyin) Init(pinyinTablePath string) {
 	}
 
 	f, err := os.Open(pinyinTablePath)
+	defer f.Close()
 	if err != nil {
 		log.Fatal(err)
 	}
